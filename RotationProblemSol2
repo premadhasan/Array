@@ -18,17 +18,17 @@ public class Program
 	public static int[] RotateArray(int[] _arr1, int d, int n){
 		if(d==0 || d==n)
 			return _arr1;
-		int[] _arr2 = new int[d];
+		int[] _arr2 = new int[d]; //declaring temp array of d elements 
 		
 		for(int i = 0; i < n; i++)
 		{
 			if(i < d)
-				_arr2[i] = _arr1[i];
+				_arr2[i] = _arr1[i]; //Store in temp array untill d elements for future use
 			
 			if((d + i) >= n)
-				_arr1[i] = _arr2[(d + i) - n];
+				_arr1[i] = _arr2[(d + i) - n]; // Finally add temp array value
 			else
-				_arr1[i] = _arr1[d + i];
+				_arr1[i] = _arr1[d + i]; // Move the elements of array after d
 			
 		}
 		return _arr1;
