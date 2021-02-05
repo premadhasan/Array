@@ -1,0 +1,49 @@
+/********************************
+Rotating array
+
+Solution: 
+arr = [1,2,3,4,5,6,7]
+d = 3
+Step1 - Reversing 0 to d elements - arr = [3,2,1,4,5,6,7] - 1 iteration
+Step2 - Reversing d to n elements - arr = [3,2,1,7,6,5,4] - 2 iteration
+Step3 - Reversing 0 to n elements - arr = [4,5,6,7,1,2,3] - 3 iteration
+********************************/
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int[] _arr1 = {1,2,3,4,5,6,7};
+		int d = 5;
+		int n = 7;
+		_arr1 = RotateArray(_arr1, d, n);
+		
+		foreach(int item in _arr1)
+		{
+			Console.WriteLine(item);
+		}
+	}
+	
+	public static int[] RotateArray(int[] _arr, int d, int n){
+		if(d==0 || d==n)
+			return _arr;
+		ReverseArray(_arr, 0, d-1);
+		ReverseArray(_arr, d, n-1);
+		ReverseArray(_arr, 0, n-1);
+		return _arr;
+	}
+	
+	public static int[] ReverseArray(int[] _arr, int start, int end)
+	{
+		int t;
+		for(int i = start; i < end; i++, end--)
+		{
+			t = _arr[i];
+			_arr[i] = _arr[end]; //Swapping
+			_arr[end] = t;
+			//end--;
+		}
+		return _arr;
+	}
+}
